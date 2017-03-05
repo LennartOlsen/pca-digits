@@ -15,4 +15,4 @@ Graph pca_set_group_10_12 hows the data for the person independent data set, thi
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/pca_set_group_10_12.png "graph")
 Graph pca_set_group_10 shows the data for the person dependent data set, this includes member 1 of group 12
 **INSERT GRAPH pca_set_group_10**
-![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/pca_set_group_10.png "graph")
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/pca_set_group_12.png "graph")

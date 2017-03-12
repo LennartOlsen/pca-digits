@@ -47,24 +47,29 @@ Person Independent :
 
 First off lets look at the baseline for the person independent data, the baseline is just a KNN prediction as done in previous tasks with a 90% split.
 We see that the performance is the same as earlier tests. Once again the speeds cannot be trusted, but used as a guideline.
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-baseline-pid.png "graph")
 
 Going on to testing a 100% variance with KNN, which means all our PCs. 
 We see that we get a accuracyof about 20% which indicates that there is some problems with my algorithm.
 We do see that the time performance is roughly the same as the baseline.
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-100-pid.png "graph")
 
 Working on with on to 80% variance coverage (which is around 53 PCs) we see that our accuracy again is around 16% which is very low, though compared to my full coverage test 100% variance we see that we see that our performance is rougly 4% lower which compares nicely to the 20% difference between the two.
 But we see that our compression have done wonders in computation time
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-80-pid.png "graph")
 
 Working with 90% variance we see a slight increase in accuracy to 20%.
 We see that the run time is still low, and thats good.
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-90-pid.png "graph")
 
 Skipping past 95% and on to 99% we see thar our performance is lower and our compute times raises a bit, 99% variance is covered by the first 252 PCs.
 This once again might indicate that something is very wrong with my algorithm.
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-99-pid.png "graph")
 
 
-** Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs **
+**Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs**

@@ -83,7 +83,7 @@ This once again might indicate that something is very wrong with my algorithm.
 Using min-max normalization on PC's covering 90% of the variance (best results from previous) and applying KNN in a 10 fold cross validation.
 
 **Normalization Before:**
-https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-before.png
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-before.png "graph")
 
 **Normalization After:**
-https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png "graph")

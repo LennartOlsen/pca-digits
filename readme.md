@@ -1,4 +1,4 @@
-##PCA on handwritten digits
+## PCA on handwritten digits
 _This is excersise 2 of the Machine Learning Course on SDU (all excersises are completed with the 100dpi setting)_
 
 Exercises :
@@ -34,14 +34,14 @@ Try plotting one of each cipher.
   
 >3.5. Lastly take two different ciphers and compare the 10 first scores and see if you can see a difference. Try also this were you take the mean for all 400 of these ciphers and compare the first 10 scores
 
-###Excersise 1.1 & 1.1.1
+### Excersise 1.1 & 1.1.1
 The following graphs show the influence/variance (the y axis) for the first 10pcs (the x axis).
 Graph pca_set_group_10_12 hows the data for the person independent data set, this includes all memebers of group 10 and 12.
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/pca_set_pid.png "graph")
 Graph pca_set_group_10 shows the data for the person dependent data set, this includes member 1 of group 12
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/pca_set_pd.png "graph")
 
-#####Summaries (cover 0-20 in descendingly ordered)
+##### Summaries (cover 0-20 in descendingly ordered)
 **Eigen Values :**
 
 Person Dependent :
@@ -64,7 +64,7 @@ Person Dependent :
 Person Independent :
 > 0.5613603
 
-###Excersise 1.2-1.4
+### Excersise 1.2-1.4
 *Performance seems to be odd in all results.*
 
 First off lets look at the baseline for the person independent data, the baseline is just a KNN prediction as done in previous tasks with a 90% split.
@@ -97,7 +97,7 @@ This once again might indicate that something is very wrong with my algorithm.
 **Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs**
 
 
-###Excersise 2.1-2.2
+### Excersise 2.1-2.2
 
 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
 
@@ -109,5 +109,5 @@ Using min-max normalization on PC's covering 90% of the variance (best results f
 **Normalization After:**
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png "graph")
 
-#####Analysis
+##### Analysis
 

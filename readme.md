@@ -12,6 +12,8 @@ Exercises :
 
 > 1.4 Interpret the results.
 
+> 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
+
 ###Excersise 1.1 & 1.1.1
 The following graphs show the influence/variance (the y axis) for the first 10pcs (the x axis).
 Graph pca_set_group_10_12 hows the data for the person independent data set, this includes all memebers of group 10 and 12.
@@ -43,7 +45,7 @@ Person Independent :
 > 0.5613603
 
 ###Excersise 1.2-1.4
-* Performance seems to be odd in all results. *
+*Performance seems to be odd in all results.*
 
 First off lets look at the baseline for the person independent data, the baseline is just a KNN prediction as done in previous tasks with a 90% split.
 We see that the performance is the same as earlier tests. Once again the speeds cannot be trusted, but used as a guideline.
@@ -73,3 +75,15 @@ This once again might indicate that something is very wrong with my algorithm.
 
 
 **Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs**
+
+###Excersise 2.1
+
+2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
+
+Using min-max normalization on PC's covering 90% of the variance (best results from previous) and applying KNN in a 10 fold cross validation.
+
+**Normalization Before:**
+https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-before.png
+
+**Normalization After:**
+https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png

@@ -14,6 +14,26 @@ Exercises :
 
 > 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
 
+> 2.2 Analyse the results
+
+> 3.1 This task is about reconstructing data using PCA. First using these functions we can plot an image of a single cipher:
+*imageSize <- sqrt(ncol(id) - 1)
+*imageM <- matrix( id[cipherNumber,2:ncol(id)],nrow = imageSize,ncol = imageSize,byrow = FALSE)
+*imageM <- rotate(imageM) # rotate is a function to rotate the image
+*image( imageM )
+Try plotting one of each cipher.
+
+> 3.2 Try plotting the first 10 eigenvectors/loadingvectors as images. Can you describe what you see?
+
+> 3.3 Try plotting a reconstruction of the images you displayed in 3.1 using all PC’s. This can be done by multiplying the loadings with the scores and adding the removed centering.
+*```trunc <- pca_res$x[cipherNumber,1:nrow(pca_res$rotation)] %*%t(pca_res$rotation[,1:nrow(pca_res$rotation)])```
+*```trunc <- scale(trunc, center = -1 * pca_res$center, scale=FALSE)```
+>3.4 Now try re-recreating using 80% of variance, 90% and 95%.
+  1. Can you describe what you see?
+  2. How much have you reduced the data size?
+  
+>3.5. Lastly take two different ciphers and compare the 10 first scores and see if you can see a difference. Try also this were you take the mean for all 400 of these ciphers and compare the first 10 scores
+
 ###Excersise 1.1 & 1.1.1
 The following graphs show the influence/variance (the y axis) for the first 10pcs (the x axis).
 Graph pca_set_group_10_12 hows the data for the person independent data set, this includes all memebers of group 10 and 12.
@@ -77,7 +97,7 @@ This once again might indicate that something is very wrong with my algorithm.
 **Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs**
 
 
-###Excersise 2.1
+###Excersise 2.1-2.2
 
 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
 
@@ -88,3 +108,6 @@ Using min-max normalization on PC's covering 90% of the variance (best results f
 
 **Normalization After:**
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png "graph")
+
+#####Analysis
+

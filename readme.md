@@ -26,8 +26,9 @@ Try plotting one of each cipher.
 > 3.2 Try plotting the first 10 eigenvectors/loadingvectors as images. Can you describe what you see?
 
 > 3.3 Try plotting a reconstruction of the images you displayed in 3.1 using all PC’s. This can be done by multiplying the loadings with the scores and adding the removed centering.
-*```trunc <- pca_res$x[cipherNumber,1:nrow(pca_res$rotation)] %*%t(pca_res$rotation[,1:nrow(pca_res$rotation)])```
-*```trunc <- scale(trunc, center = -1 * pca_res$center, scale=FALSE)```
+* ```trunc <- pca_res$x[cipherNumber,1:nrow(pca_res$rotation)] %*%t(pca_res$rotation[,1:nrow(pca_res$rotation)])```
+* ```trunc <- scale(trunc, center = -1 * pca_res$center, scale=FALSE)```
+
 >3.4 Now try re-recreating using 80% of variance, 90% and 95%.
   1. Can you describe what you see?
   2. How much have you reduced the data size?

@@ -1,4 +1,6 @@
 doSectionOne <- function(){
+  pd <- loadEmAll(c(1,10,12), c(1,2), 100, "2017/")
+  pid <- loadEmAll(c(12,10), c(1,2,3), 100, "2017/")
   
   pca_set_pid <- getPCASet(pid)
   pca_set_pd <- getPCASet(pd)
@@ -26,18 +28,15 @@ doSectionOne <- function(){
   dataset_shuffle <- dataset[sample(nrow(dataset)),]
   minTest = nrow(dataset)*0.90
   maxTest = nrow(dataset)
-  dataset_train <- dataset_shuffle[1:minTest - 1,2:ncol(dataset)]
-  dataset_test <- dataset_shuffle[minTest:maxTest,2:ncol(dataset)]
   dataset_train_labels <- dataset_shuffle[1:minTest - 1,1]
   dataset_test_labels <- dataset_shuffle[minTest:maxTest,1]
   
   ### DO PCA ON DATA ###
   
-  pid_test <- getPCASet(dataset_test)
-  pid_train <- getPCASet(dataset_train)
+  pid_knn <- getPCASet(dataset_shuffle)
   
-  pid_test_xs <- pid_test$x
-  pid_train_xs <- pid_train$x
+  pid_train_xs <- pid_knn$x[1:minTest-1,]
+  pid_test_xs <- pid_knn$x[minTest:maxTest,]
   
   ##doKnn <- function(train, test, train_labels, test_labels, range_k)
   doKnn(dataset_train, dataset_test, dataset_train_labels, dataset_test_labels, c(1:10))
@@ -46,28 +45,28 @@ doSectionOne <- function(){
   
   ### Covering 80% variance
   c = 53
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  pid_80_train <- pid_train_xs[,1:c]
+  pid_80_test <- pid_test_xs[,1:c]
+  doKnn(pid_80_train, pid_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   ### Covering 90% variance
-  c = 106
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 105
+  pid_80_train <- pid_train_xs[,1:c]
+  pid_80_test <- pid_test_xs[,1:c]
+  doKnn(pid_80_train, pid_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   
   ### Covering 95% variance
-  c = 165
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 164
+  pid_80_train <- pid_train_xs[,1:c]
+  pid_80_test <- pid_test_xs[,1:c]
+  doKnn(pid_80_train, pid_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   ### Covering 99% variance
-  c = 252
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 251
+  pid_80_train <- pid_train_xs[,1:c]
+  pid_80_test <- pid_test_xs[,1:c]
+  doKnn(pid_80_train, pid_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   
   
@@ -77,49 +76,48 @@ doSectionOne <- function(){
   ## KNN PERSON DEPENDENT ##
   ##
   dataset <- data.frame(pd)
-  set.seed(42)
-  dataset_shuffle <- dataset[sample(nrow(dataset)),]
-  minTest = nrow(dataset)*0.90
+  minTest = nrow(dataset)*0.75 ##amounts to one person, in this case member 1 from group 12 (ME)
   maxTest = nrow(dataset)
-  dataset_train <- dataset_shuffle[1:minTest - 1,2:ncol(dataset)]
-  dataset_test <- dataset_shuffle[minTest:maxTest,2:ncol(dataset)]
-  dataset_train_labels <- dataset_shuffle[1:minTest - 1,1]
-  dataset_test_labels <- dataset_shuffle[minTest:maxTest,1]
+  
+  dataset_test <- dataset[minTest:maxTest,2:ncol(dataset)]
+  dataset_test_labels <- dataset[minTest:maxTest,1]
+  
+  dataset_train <- dataset[1:minTest - 1,2:ncol(dataset)]
+  dataset_train_labels <- dataset[1:minTest - 1,1]
   
   ### DO PCA ON DATA ###
-  pid_test <- getPCASet(dataset_test)
-  pid_train <- getPCASet(dataset_train)
+  pd_knn <- getPCASet(dataset)
   
-  pid_test_xs <- pid_test$x
-  pid_train_xs <- pid_train$x
+  pd_train_xs <- pd_knn$x[1:minTest-1,]
+  pd_test_xs <- pd_knn$x[minTest:maxTest,]
   
   ##doKnn <- function(train, test, train_labels, test_labels, range_k)
   doKnn(dataset_train, dataset_test, dataset_train_labels, dataset_test_labels, c(1:10))
-  doKnn(pid_train_xs, pid_test_xs, dataset_train_labels, dataset_test_labels, c(1:10))
+  doKnn(pd_train_xs, pd_test_xs, dataset_train_labels, dataset_test_labels, c(1:10))
   
   
   ### Covering 80% variance
-  c = 70
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  results <- doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 65
+  pd_80_train <- pd_train_xs[,1:c]
+  pd_80_test <- pd_test_xs[,1:c]
+  results <- doKnn(pd_80_train, pd_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   ### Covering 90% variance
   c = 120
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  pd_80_train <- pd_train_xs[,1:c]
+  pd_80_test <- pd_test_xs[,1:c]
+  doKnn(pd_80_train, pd_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   
   ### Covering 95% variance
-  c = 169
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 176
+  pd_80_train <- pd_train_xs[,1:c]
+  pd_80_test <- pd_test_xs[,1:c]
+  doKnn(pd_80_train, pd_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
   
   ### Covering 99% variance
-  c = 246
-  pid_80_train <- matrix(pid_train_xs[1:c])
-  pid_80_test <- matrix(pid_test_xs[1:c])
-  doKnn(pid_80_train, pid_80_test, dataset_train_labels[1:c], dataset_test_labels[1:c], c(1:10))
+  c = 256
+  pd_80_train <- pd_train_xs[,1:c]
+  pd_80_test <- pd_test_xs[,1:c]
+  doKnn(pd_80_train, pd_80_test, dataset_train_labels, dataset_test_labels, c(1:10))
 }

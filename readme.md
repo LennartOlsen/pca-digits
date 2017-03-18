@@ -51,7 +51,7 @@ Person Dependent :
 |---------|---------|---------|---------|---------|---------|
 |17.30    |21.65    |29.36    |34.66    |40.97    |83.28    |
 
-Person Independent :
+Person Independent : (Data slightly incorrect)
 
 |Min.     |1st Qu.  |Median   |Mean     |3rd Qu.  |Max.     |
 |---------|---------|---------|---------|---------|---------|
@@ -66,41 +66,54 @@ Person Independent :
 > 0.5613603
 
 ### Excersise 1.2-1.4
-*Performance seems to be odd in all results.*
-
-First off lets look at the baseline for the person independent data, the baseline is just a KNN prediction as done in previous tasks with a 90% split.
-We see that the performance is the same as earlier tests. Once again the speeds cannot be trusted, but used as a guideline.
-
-![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-baseline-pid.png "graph")
+**Person independent data is based on the aggregated result set of groups 10 and 12**
 
 Going on to testing a 100% variance with KNN, which means all our PCs. 
-We see that we get a accuracyof about 20% which indicates that there is some problems with my algorithm.
-We do see that the time performance is roughly the same as the baseline.
+We see an accuracy of 90% with K=1, which in turn means that for some reason if we only select our 1 nearest neighbour we are getting the best results.
+Consindering run times (in this case minutes) we see that they are over 1 minute pr iteration.
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-100-pid.png "graph")
 
-Working on with on to 80% variance coverage (which is around 53 PCs) we see that our accuracy again is around 16% which is very low, though compared to my full coverage test 100% variance we see that we see that our performance is rougly 4% lower which compares nicely to the 20% difference between the two.
-But we see that our compression have done wonders in computation time
+Working on with on to 80% variance coverage (which is the first 53 PCs), interrestingly we get almost the same score here, meaning that our data may contain a lot of noise which is filtered out by PCA.
+We see that run times are very low, at around 4 seconds for each K.
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-80-pid.png "graph")
 
-Working with 90% variance we see a slight increase in accuracy to 20%.
-We see that the run time is still low, and thats good.
+Covering 90% variance we see a slight increase in accuracy and actually even lower run times, this could be down to computer stress levels and throtteling of cpu performance, but this is still remarkable.
+90% variance coverage has given me the best performance in terms of both accuracy and run times.
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-90-pid.png "graph")
 
-Skipping past 95% and on to 99% we see thar our performance is lower and our compute times raises a bit, 99% variance is covered by the first 252 PCs.
-This once again might indicate that something is very wrong with my algorithm.
+95 and 99% coverage proved to give higher run times and slightly lower performance, this is properly due to the noise in the images being part of the knn. Interestingly we see that we need almost 100 more PCs to go from 95 to 99% coverage (from 164 to 251), thats almost one third of the PCs (324) to cover the entire dataset, this tells us that very little data is in the last 150 pcs furthermore we see that we can easily manage with only half the data cutting our runtimes to less than a tenth of running knn on all of our data
 
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-95-pid.png "graph")
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-99-pid.png "graph")
 
 
-**Restults are the same for person dependent data see https://github.com/LennartOlsen/pca-digits/blob/master/images/ for more graphs**
+**Person dependent data based on my self (group 12 member 1) vs group 10 and 1 (member 1 and 2)**
 
+Looking at the person dependt data gave quite different results, run times are through the fucking roof, and results are shaky at best.
+
+The baseline results, which is knn with a 75% split (the other 3 members), gave long running times, roughly 6 minutes and bad prediction of around 40%.
+This tells us that comparing handwriting from differnt persons is pretty difficult.
+
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-baseline-pd.png "graph")
+
+Moving on to our 80% coverage we see a slightly higher 44% accuracy and a run time at a lower 15 seconds pr k.
+The accuracy is again rising on account of less noise, but in this case this could also be attributed to differences being filtered out, such as pen color, crosses in 7's and other things.
+
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-80-pd.png "graph")
+
+Working with 90% variance coverage gave worse results and even higher runtimes, this indicates a decline in accuracy from 80% and up, so that could mean that some features are being filtered out that are unnessecary for correct predictions.
+
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-90-pd.png "graph")
+
+The pattern presists in 95% variance aswell
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-95-pd.png "graph")
 
 ### Excersise 2.1-2.2
 
-2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
+> 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
 
 Using min-max normalization on PC's covering 90% of the variance (best results from previous) and applying KNN in a 10 fold cross validation.
 
@@ -110,5 +123,5 @@ Using min-max normalization on PC's covering 90% of the variance (best results f
 **Normalization After:**
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png "graph")
 
-##### Analysis
+#### Analysis
 

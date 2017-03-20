@@ -7,34 +7,37 @@ source("pcagenerator.r")
 source("get_covering_percentage.r")
 source("do_knn.r")
 source("cross_validation.r")
+source("generate_cipher_images.r")
 
 source("section1.r")
 
 
 require("stats")
 
-#Fetches the person independtent data (i think) by accumulating all data into one set
-pid <- loadEmAll(c(12,10), c(1,2,3), 100, "2017/")
 
-#Fetches the person dependent data (i think) by creating a data set with just one person
-pd <- loadEmAll(c(12), c(1), 100, "2017/")
-
+pid <- loadEmAll(c(12), c(1,2,3), 100, "2017/")
 
 ##
-## KNN PERSON INDEPENDENT ##
+# 3.1 Image recall
 ##
-dataset <- data.frame(pid)
-set.seed(42)
-dataset_shuffle <- dataset[sample(nrow(dataset)),]
-cross_set <- dataset_shuffle[1:nrow(dataset),2:ncol(dataset)]
-cross_set_labels <- dataset_shuffle[1:nrow(dataset),1]
 
-cross_set =  (cross_set - min(cross_set))/
-                    (max(cross_set) - min(cross_set))
+##3.1 This task is about reconstructing data using PCA. First using these functions we can plot an image of a single cipher:
+## *imageSize <- sqrt(ncol(id) - 1)
+## *imageM <- matrix( id[cipherNumber,2:ncol(id)],nrow = imageSize,ncol = imageSize,byrow = FALSE)
+## *imageM <- rotate(imageM) # rotate is a function to rotate the image
+## *image( imageM )
+# Try plotting one of each cipher.
 
-cross_set_pid <- getPCASet(cross_set)
+pca_set_pid <- getPCASet(pid, TRUE, FALSE)
 
-cross_set_pid_xs <- cross_set_pid$x
+restr <- pca_set_pid$x[,1:250] %*% t(pca_set_pid$rotation[,1:250])
 
-#doCross <- function(dataset, labels, range_k, folds){}
-doCross(head(cross_set_pid_xs,106), head(cross_set_labels,106), c(1:10), c(1:10))
+# unscale and uncenter the data
+if(pca_set_pid$scale != FALSE){
+  restr <- scale(restr, center = FALSE , scale=1/pca$scale)
+}
+if(all(pca_set_pid$center != FALSE)){
+  restr <- scale(restr, center = -1 * pca_set_pid$center, scale=FALSE)
+}
+
+generateCipherImages(pid, c(0:9))

@@ -92,9 +92,9 @@ Covering 90% variance we see a slight increase in accuracy and actually even low
 
 **Person dependent data based on my self (group 12 member 1) vs group 10 and 1 (member 1 and 2)**
 
-Looking at the person dependt data gave quite different results, run times are through the fucking roof, and results are shaky at best.
+Looking at the person dependt data gave quite different results, run times are through the roof, and results are shaky at best.
 
-The baseline results, which is knn with a 75% split (the other 3 members), gave long running times, roughly 6 minutes and bad prediction of around 40%.
+The baseline results, which is knn with a 75% split (the other 3 members), gave long running times, just below 6 minutes and bad prediction of around 40%.
 This tells us that comparing handwriting from differnt persons is pretty difficult.
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-baseline-pd.png "graph")
@@ -108,20 +108,30 @@ Working with 90% variance coverage gave worse results and even higher runtimes, 
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-90-pd.png "graph")
 
-The pattern presists in 95% variance aswell
+The pattern presists in 95% variance aswell, also in the 99% variance. With 99% variance introducing a almost 4 minute runtime. This leads to a conclusion that 80% variance coverage is properly the best for person dependent data.
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-95-pd.png "graph")
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/knn-99-pd.png "graph")
 
 ### Excersise 2.1-2.2
 
-> 2.1 Perform one of the two normalizations suggested in the lecture (min-max normalization and z-score standardization) for the best parameter setting found under 1.3 and apply KNN with 10 fold cross-validation (10 runs, 90% training and 10% test set). Apply the normalization before and after PCA independently and compare the results.
+Using min-max normalization on PC's covering 90% of the variance (best results from previous) and applying KNN (1-10) in a 10 fold cross validation.
 
-Using min-max normalization on PC's covering 90% of the variance (best results from previous) and applying KNN in a 10 fold cross validation.
+**Normalization Before PCA:**
 
-**Normalization Before:**
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-before.png "graph")
 
-**Normalization After:**
+**Normalization After PCA:**
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/cross-knn-90-after.png "graph")
 
-#### Analysis
+Not much can be said about the results, it seems that they fetch a bit lower accuracy than the regular 90% cross validation, but this can also be attributed to the averageing of the results.
 
+Whats most interresting is proberly the high similarity between the two suggesting that the normailization does not matter in PCA.
+
+### Excersise 3.1
+
+Images were recreated directly from the dataset that were scanned, no using PCA. The ciphers should be an "average" of the sum of all pixels that make up the given cipher.
+The ciphers was extracted from my own scans, group12 member 1. Adding in more images (groups and members) makes this really difficult, and i honesly didnt know how to handle them.
+
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-0.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-1.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-2.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-3.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-4.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-5.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-6.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-7.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-8.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-9.png "cipher")

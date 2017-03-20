@@ -3,7 +3,7 @@
 ###
 require("stats")
 
-getPCASet <- function(dataset, filterOutLabels=TRUE) {
+getPCASet <- function(dataset, filterOutLabels=TRUE, reappendLabels=FALSE) {
   ## Filter out the first one due to it being the label
   if(filterOutLabels){
     ds = prcomp(dataset[,2:ncol(dataset)], center = TRUE, scale. = TRUE)

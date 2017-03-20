@@ -133,5 +133,25 @@ Whats most interresting is proberly the high similarity between the two suggesti
 
 Images were recreated directly from the dataset that were scanned, no using PCA. The ciphers should be an "average" of the sum of all pixels that make up the given cipher.
 The ciphers was extracted from my own scans, group12 member 1. Adding in more images (groups and members) makes this really difficult, and i honesly didnt know how to handle them.
+What i can see from the images is that some distortion persists in the form of black line, this is very prominent in 9, this is due to distorted scans.
 
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-0.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-1.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-2.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-3.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-4.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-5.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-6.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-7.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-8.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr12-direct-9.png "cipher")
+
+### Excersise 3.2
+
+Covering the 10 first loadings gives us some wierd images, i guess they are meant to point out the egdes of the images, but i really cant decode them.
+
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-0.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-1.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-2.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-3.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-4.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-5.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-6.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-7.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-8.png "cipher")![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/10-loadings-9.png "cipher")
+
+### Excersise 3.3
+
+I dont know if its due to me not adding other members of other groups but of course they show exactly the same as excersise 3.1 as they cover 100% of the variance
+
+### Excersise 3.4
+
+We see that even at 80% the images are still comprehensible as ciphers and can be fairly easily understood, we also see that the black bars from the mis scans are still there.
+The compression should be descriped by dividing the number of PCs with the number of features originally requiered to generate the image:
+
+**80%** requires 70 PCs that is 70/324 or ≈ 21,6% of the original size
+**90%** requires 120 PCs that is 120/324 or ≈ 37,0% of the original size
+**95%** requires 168 PCs that is 168/324 or ≈ 51,9% of the original size

@@ -28,16 +28,12 @@ pid <- loadEmAll(c(12), c(1,2,3), 100, "2017/")
 ## *image( imageM )
 # Try plotting one of each cipher.
 
-pca_set_pid <- getPCASet(pid, TRUE, FALSE)
-
-restr <- pca_set_pid$x[,1:250] %*% t(pca_set_pid$rotation[,1:250])
-
-# unscale and uncenter the data
-if(pca_set_pid$scale != FALSE){
-  restr <- scale(restr, center = FALSE , scale=1/pca$scale)
-}
-if(all(pca_set_pid$center != FALSE)){
-  restr <- scale(restr, center = -1 * pca_set_pid$center, scale=FALSE)
-}
-
 generateCipherImages(pid, c(0:9))
+
+####
+# 3.2 image
+###
+
+pca_set_pid <- getPCASet(pid, TRUE)
+
+generateCipherFromPcaImages(pca_set_pid, c(0:9), 10)

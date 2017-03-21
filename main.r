@@ -36,4 +36,21 @@ generateCipherImages(pid, c(0:9))
 
 pca_set_pid <- getPCASet(pid, TRUE)
 
-generateCipherFromPcaImages(pca_set_pid, c(0:9), 10)
+## 100%
+generateCipherFromPcaImages(pca_set_pid, c(0:9), 324)
+
+
+## 80%
+generateCipherFromPcaImages(pca_set_pid, c(0:9), 70)
+
+
+## 90%
+generateCipherFromPcaImages(pca_set_pid, c(0:9), 120)
+
+## 95%
+generateCipherFromPcaImages(pca_set_pid, c(0:9), 168)
+
+
+pca_set_pid <- getPCASet(pid, TRUE)
+
+generateCipherFromPcaImages(pca_set_pid, c(0,1), 10)

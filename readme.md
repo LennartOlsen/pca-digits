@@ -1,10 +1,6 @@
 ## PCA on handwritten digits
 _This is excersise 2 of the Machine Learning Course on SDU (all excersises are completed with the 100dpi setting)_
 
-Exercises :
-  
->3.5. Lastly take two different ciphers and compare the 10 first scores and see if you can see a difference. Try also this were you take the mean for all 400 of these ciphers and compare the first 10 scores
-
 ### Excersise 1.1 & 1.1.1
 The following graphs show the influence/variance (the y axis) for the first 10pcs (the x axis).
 Graph pca_set_group_10_12 hows the data for the person independent data set, this includes all memebers of group 10 and 12.
@@ -127,3 +123,14 @@ The compression should be descriped by dividing the number of PCs with the numbe
 **90%** requires 120 PCs that is 120/324 or ≈ 37,0% of the original size
 
 **95%** requires 168 PCs that is 168/324 or ≈ 51,9% of the original size
+
+
+### Excersise 3.5
+
+** 10 First PCs  0 & 1**
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc10-0.png "cipher")
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc10-1.png "cipher")
+
+** All (324) PCs  0 & 1**
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc324-0.png "cipher")
+![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc324-1.png "cipher")

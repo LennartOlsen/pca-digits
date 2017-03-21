@@ -127,10 +127,12 @@ The compression should be descriped by dividing the number of PCs with the numbe
 
 ### Excersise 3.5
 
-** 10 First PCs  0 & 1**
+** 10 First PCs  0 & 1 **
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc10-0.png "cipher")
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc10-1.png "cipher")
 
-** All (324) PCs  0 & 1**
+** All (324) PCs  0 & 1 **
+
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc324-0.png "cipher")
 ![alt-text](https://github.com/LennartOlsen/pca-digits/blob/master/images/gr-12-pc324-1.png "cipher")
